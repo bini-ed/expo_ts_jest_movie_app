@@ -16,8 +16,9 @@ import {
   movieDetailService,
 } from "../../service/movie.service";
 import styles from "./styles";
-import { MovieCastType, MovieDetailType } from "./MovieDetail.utils";
-import LoadingIndicator from "../LoadingIndicator";
+import { MovieCastType, MovieDetailType } from "./utils/MovieDetail.utils";
+import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
+import Error from "../../components/Error/Error";
 
 type Props = {
   id: any;
@@ -27,6 +28,7 @@ const MovieDetailComponent: FC<Props> = ({ id }) => {
   const [detail, setDetail] = useState<MovieDetailType>();
   const [cast, setCast] = useState<MovieCastType[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const getDetail = async () => {
     setLoading(true);
@@ -36,7 +38,9 @@ const MovieDetailComponent: FC<Props> = ({ id }) => {
       setCast(response.data.cast);
       setDetail(data);
     } catch (error) {
-      console.log(error);
+      setError("Error occurred, Please try again!");
+      setCast([]);
+      // setDetail(null);
     }
     setLoading(false);
   };
@@ -46,9 +50,11 @@ const MovieDetailComponent: FC<Props> = ({ id }) => {
   }, [id]);
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "black" }}>
       {loading ? (
         <LoadingIndicator loading={loading} />
+      ) : error ? (
+        <Error message={error} />
       ) : (
         <ImageBackground
           source={{ uri: getImage("w500", detail?.poster_path) }}

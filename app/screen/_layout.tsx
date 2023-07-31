@@ -33,6 +33,7 @@ const _layout = () => {
           null,
         ],
       }}
+      initialRouteName="Movies"
     >
       <Tabs.Screen
         name="Search"

@@ -2,12 +2,12 @@ import { View, Image, Dimensions } from "react-native";
 import React, { FC } from "react";
 import { getImage } from "../../service/movie.service";
 import { styles } from "./styles";
-import { Text } from "react-native";
 import { useRouter } from "expo-router";
-import { MovieType } from "../Movie/utils/Movies.utils";
+import { MovieType } from "../../screen/Movie/utils/Movies.utils";
 import { TouchableOpacity } from "react-native";
+import AppText from "../AppText/AppText";
 
-const { width } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 type MovieCardProps = {
   movies: MovieType;
@@ -16,28 +16,39 @@ type MovieCardProps = {
 
 const MovieCard: FC<MovieCardProps> = ({ movies, type }) => {
   const router = useRouter();
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { height: type ? height / 3 : height / 2.5 }]}
+    >
       <TouchableOpacity
         onPress={() => {
           router.push(`/Movies/${movies?.id}`);
         }}
       >
         <Image
-          source={{ uri: getImage(`w500`, movies?.poster_path) }}
+          source={{ uri: getImage(`w400`, movies?.poster_path) }}
           style={[
             styles.image,
             type
-              ? { width: width / 2 - 30, height: 200, resizeMode: "contain" }
-              : null,
+              ? {
+                  width: width / 2 - 30,
+                  height: "90%",
+                }
+              : {
+                  width: width / 2,
+                  height: "90%",
+                },
           ]}
         />
-        <Text style={styles.title}>
-          {movies?.original_title?.length > 25
-            ? movies?.original_title.slice(0, 25) + "..."
-            : movies?.original_title}
-        </Text>
-        {/* </Link> */}
+        <AppText
+          styles={styles.title}
+          text={
+            movies?.title?.length > 20
+              ? movies?.title.slice(0, 20) + "..."
+              : movies?.title
+          }
+        ></AppText>
       </TouchableOpacity>
     </View>
   );

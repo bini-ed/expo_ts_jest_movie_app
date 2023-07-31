@@ -2,7 +2,7 @@ import { View } from "react-native";
 import React from "react";
 import { useGlobalSearchParams, Stack } from "expo-router";
 
-import MovieDetailComponent from "../../src/components/MovieDetail/MovieDetail";
+import MovieDetailComponent from "../../src/screen/MovieDetail/MovieDetail";
 
 const MovieDetail = () => {
   const { id } = useGlobalSearchParams();

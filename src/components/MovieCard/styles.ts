@@ -1,14 +1,14 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 export const styles = StyleSheet.create({
-  image: {
-    width: 250,
-    height: 300,
-    borderRadius: 20,
-    resizeMode: "contain",
+  container: {
+    margin: 5,
   },
-  container: { margin: 5 },
+  image: {
+    borderRadius: 10,
+  },
   title: {
     color: "white",
+    textAlign: "center",
   },
 });

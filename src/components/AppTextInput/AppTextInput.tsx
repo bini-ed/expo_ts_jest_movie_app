@@ -1,14 +1,8 @@
-import {
-  KeyboardAvoidingView,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { TextInput, TouchableOpacity, View } from "react-native";
 import React, { FC } from "react";
 
-import AppColor from "../../styles/colors";
 import { MaterialIcons } from "@expo/vector-icons";
+import { styles } from "./styles";
 
 type TextInputType = {
   value: string;
@@ -42,30 +36,3 @@ export const AppTextInput: FC<TextInputType> = ({
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    marginVertical: 5,
-  },
-  textInput: {
-    // backgroundColor: '#CCFFFF',
-    backgroundColor: AppColor.primary,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
-    color: "whitesmoke",
-    flex: 0.8,
-    height: 35,
-    padding: 5,
-  },
-  searchBtn: {
-    // backgroundColor: 'lightblue',
-    backgroundColor: "grey",
-    height: 35,
-    flex: 0.2,
-    justifyContent: "center",
-    alignItems: "center",
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
-  },
-});

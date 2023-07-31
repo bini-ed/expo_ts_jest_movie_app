@@ -7,7 +7,7 @@ import {
   within,
 } from "@testing-library/react-native";
 import { AppTextInput } from "../src/components/AppTextInput/AppTextInput";
-import SearchComponent from "../src/components/Search/Search.component";
+import SearchComponent from "../src/screen/Search/Search.component";
 import { searchMovies } from "../src/service/movie.service";
 
 jest.mock("../src/service/movie.service", () => ({
