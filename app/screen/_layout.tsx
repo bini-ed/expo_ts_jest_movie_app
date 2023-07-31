@@ -2,8 +2,7 @@ import React from "react";
 import { Tabs } from "expo-router";
 import AppColor from "../../src/styles/colors";
 import { MaterialIcons } from "@expo/vector-icons";
-import { View } from "react-native";
-import { StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 const _layout = () => {
   return (
@@ -39,7 +38,7 @@ const _layout = () => {
         name="Search"
         options={{
           headerShown: false,
-          tabBarIcon: ({ focused, size, color }) => (
+          tabBarIcon: ({ focused }) => (
             <View
               style={
                 focused
@@ -138,13 +137,13 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tabs: {
-    width: 50,
-    height: 50,
-    borderRadius: 50,
-    bottom: 15,
-    borderColor: "orange",
-    borderWidth: 7,
-    justifyContent: "center",
     alignItems: "center",
+    borderColor: "orange",
+    borderRadius: 50,
+    borderWidth: 7,
+    bottom: 15,
+    height: 50,
+    justifyContent: "center",
+    width: 50,
   },
 });
